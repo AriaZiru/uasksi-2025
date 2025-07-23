@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('laporans', function (Blueprint $table) {
             $table->id();
+            $table->date('periode_bulan');
+            $table->string('jenis_laporan');
+            $table->string('deskripsi_laporan');
             $table->timestamps();
         });
     }
