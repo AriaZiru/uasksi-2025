@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('daftar_barangs', function (Blueprint $table) {
             $table->id();
             $table->string('nama_barang');
-            $table->string('kondisi_barang');
-            $table->enum('kondisi', ['baik', 'rusak', 'servis'])->default('baik');
+            $table->enum('kondisi_barang', ['baik', 'rusak', 'servis'])->default('baik');
             $table->enum('status', ['aktif', 'dipinjam', 'hilang', 'rusak'])->default('aktif');
             $table->integer('jumlah');
             $table->timestamps();
