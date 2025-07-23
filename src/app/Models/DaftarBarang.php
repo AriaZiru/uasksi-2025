@@ -14,7 +14,4 @@ class DaftarBarang extends Model
         $this->hasMany(DetailPeminjaman::class, 'id_barang');
     }
 
-
-
-    
 }
