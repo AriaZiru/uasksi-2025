@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Fillament\Forms\Tables\Select;
 
 class DetailPeminjamanResource extends Resource
 {
@@ -23,7 +24,18 @@ class DetailPeminjamanResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('id_peminjaman_barang')
+                    ->required()
+                    ->relationship('peminjaman', 'nama'),
+                Forms\Components\Select::make('id_barang')
+                    ->required()
+                    ->relationship('DaftarBarang', 'nama_barang'), 
+                Forms\Components\TextInput::make('jumlah_peminjaman')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('catatan_barang_kembali')
+                    ->maxLength(255)
+                    ->default(null),
             ]);
     }
 
@@ -31,7 +43,25 @@ class DetailPeminjamanResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('id_peminjaman_barang')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('id_barang')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('jumlah_peminjaman')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('catatan_barang_kembali')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

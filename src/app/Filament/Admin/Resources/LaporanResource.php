@@ -23,7 +23,14 @@ class LaporanResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\DatePicker::make('periode_bulan')
+                    ->required(),
+                Forms\Components\TextInput::make('jenis_laporan')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('deskripsi_laporan')
+                    ->required()
+                    ->maxLength(255),
             ]);
     }
 
@@ -31,7 +38,21 @@ class LaporanResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('periode_bulan')
+                    ->date()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('jenis_laporan')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('deskripsi_laporan')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

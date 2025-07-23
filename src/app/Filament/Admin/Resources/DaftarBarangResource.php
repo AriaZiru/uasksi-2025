@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Fillament\Forms\Tables\Select;
 
 class DaftarBarangResource extends Resource
 {
@@ -23,7 +24,18 @@ class DaftarBarangResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('nama_barang')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\Select::make('kondisi_barang')
+                    ->required()
+                    ->options(["baik"=>'baik', 'rusak'=>'rusak', 'servis'=>'servis']),
+                Forms\Components\Select::make('status')
+                    ->required()
+                    ->options(['aktif'=>'aktif', 'dipinjam'=>'dipinjam', 'hilang'=>'hilang','rusak'=>'rusak']),
+                Forms\Components\TextInput::make('jumlah')
+                    ->required()
+                    ->numeric(),
             ]);
     }
 
@@ -31,7 +43,21 @@ class DaftarBarangResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('nama_barang')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('kondisi_barang'),
+                Tables\Columns\TextColumn::make('status'),
+                Tables\Columns\TextColumn::make('jumlah')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
