@@ -17,6 +17,7 @@ use Fillament\Forms\Tables\Select;
 class DetailPeminjamanResource extends Resource
 {
     protected static ?string $model = DetailPeminjaman::class;
+    protected static ?string $pluralLabel = 'Detail Peminjaman Barang';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -43,16 +44,20 @@ class DetailPeminjamanResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id_peminjaman_barang')
+                Tables\Columns\TextColumn::make('peminjaman.nama')
+                    ->label('Nama Peminjam')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('id_barang')
+                Tables\Columns\TextColumn::make('DaftarBarang.nama_barang')
+                    ->label('Nama Barang')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('jumlah_peminjaman')
+                    ->label('Jumlah Peminjaman Barang')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('catatan_barang_kembali')
+                    ->label('Keterangan Barang Kembali')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
