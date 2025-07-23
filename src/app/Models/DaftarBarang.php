@@ -15,5 +15,6 @@ class DaftarBarang extends Model
     }
 
 
+
     
 }

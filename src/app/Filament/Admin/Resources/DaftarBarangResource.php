@@ -17,7 +17,7 @@ use Fillament\Forms\Tables\Select;
 class DaftarBarangResource extends Resource
 {
     protected static ?string $model = DaftarBarang::class;
-
+    protected static ?string $pluralLabel = 'Daftar Barang';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
@@ -34,6 +34,7 @@ class DaftarBarangResource extends Resource
                     ->required()
                     ->options(['aktif'=>'aktif', 'dipinjam'=>'dipinjam', 'hilang'=>'hilang','rusak'=>'rusak']),
                 Forms\Components\TextInput::make('jumlah')
+                    ->label('Total Barang')
                     ->required()
                     ->numeric(),
             ]);
@@ -48,6 +49,7 @@ class DaftarBarangResource extends Resource
                 Tables\Columns\TextColumn::make('kondisi_barang'),
                 Tables\Columns\TextColumn::make('status'),
                 Tables\Columns\TextColumn::make('jumlah')
+                    ->label('Total Barang')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')

@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class PeminjamanBarangResource extends Resource
 {
     protected static ?string $model = PeminjamanBarang::class;
+    protected static ?string $pluralLabel = 'Data Peminjaman Barang';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

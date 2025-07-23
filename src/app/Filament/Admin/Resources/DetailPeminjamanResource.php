@@ -12,7 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Fillament\Forms\Tables\Select;
+
 
 class DetailPeminjamanResource extends Resource
 {
@@ -80,6 +80,8 @@ class DetailPeminjamanResource extends Resource
                 ]),
             ]);
     }
+
+
 
     public static function getRelations(): array
     {
